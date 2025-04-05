@@ -15,8 +15,7 @@ function Navbar({ handleMenuIcon, handleShowNavbar, showProfileNavbar, setShowPr
     { id: "logout", label: "Logout"},
   ];
 
-  const handleItemClick = (id) => {
-    // setActiveItem(id);
+  const handleItemClick = () => {
     setShowProfileNavbar(false);
   };
 

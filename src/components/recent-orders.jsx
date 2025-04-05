@@ -128,7 +128,7 @@ function RecentOrders() {
                 <td className="py-3 text-xs sm:text-sm">{order.orderId}</td>
                 <td className="py-3 text-xs sm:text-sm">{order.date}</td>
                 <td className="py-3 text-xs sm:text-sm pr-3">
-                  <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${order.bgColor}`}>
+                  <div className={`flex items-center gap-2 px-3 py-1 rounded-full w-max ${order.bgColor}`}>
                     <GoDotFill className={`w-3 h-3 ${order.statusColor}`}/>
                     <span className={`text-xs ${order.statusColor}`}>{order.status}</span>
                   </div>
