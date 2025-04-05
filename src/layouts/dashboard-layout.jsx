@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,28 +15,36 @@ function DashboardLayout() {
     setIsOpen(false);
   };
 
+  const handleShowNavbar = () => {
+    setShowProfileNavbar(!showProfileNavbar);
+    console.log("clkicked",showProfileNavbar)
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <div className="min-h-screen flex w-full bg-gray-50">
-      {/* Fixed Sidebar */}
       <Sidebar menu={isOpen} onClose={handleCloseMenu} />
-
-      {/* Main Content Area */}
-      <div
-        className="ml-0 lg:ml-64 flex flex-col overflow-y-auto w-full"
-      >
+      <div className="ml-0 lg:ml-64 flex flex-col overflow-y-auto w-full">
         {/* Navbar */}
-        <Navbar handleMenuIcon={handleToggleMenu} />
-        {/* Scrollable Content */}
+        <Navbar handleMenuIcon={handleToggleMenu} handleShowNavbar={handleShowNavbar} showProfileNavbar={showProfileNavbar} setShowProfileNavbar={setShowProfileNavbar}/>
         <main className="flex-1 overflow-y-auto mt-[90px] w-full">
-          {/* This will allow the main content to scroll beneath the sticky navbar */}
           <Outlet />
         </main>
       </div>
-
       {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 z-[90] lg:hidden bg-black/40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[600] lg:hidden bg-black/40 transition-all duration-300 transform ${
+          isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
         }`}
         onClick={handleCloseMenu}
       ></div>

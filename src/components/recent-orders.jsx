@@ -54,7 +54,7 @@ function RecentOrders() {
       bgColor: "bg-red-100"
     },
     {
-      id: 3,
+      id: 5,
       product: "Blue Backpack",
       image: bag,
       customer: "John Doe",
@@ -64,11 +64,32 @@ function RecentOrders() {
       statusColor: "text-green-400",
       bgColor: "bg-green-100"
     },
-    // Add more orders as needed
+    {
+    id: 6,
+    product: "Water Bottle",
+    image: bottle,
+    customer: "Peterson Jack",
+    orderId: "#8441573",
+    date: "27 Jun 2024",
+    status: "Pending",
+    statusColor: "text-yellow-400",
+    bgColor: "bg-yellow-100"
+    },
+    {
+        id: 7,
+        product: "Water Bottle",
+        image: bottle,
+        customer: "Peterson Jack",
+        orderId: "#8441573",
+        date: "27 Jun 2024",
+        status: "Pending",
+        statusColor: "text-yellow-400",
+        bgColor: "bg-yellow-100"
+        },
   ];
 
   return (
-    <div className="">
+    <>
       <div className="flex items-center justify-between p-4">
         <h1 className="font-medium">Recent Orders</h1>
         <button className="px-3 py-2 text-sm text-blue-500 rounded-lg border border-gray-300 hover:bg-gray-50">
@@ -78,10 +99,10 @@ function RecentOrders() {
       
       <div className="bg-gray-400 h-[1px]"></div>
       
-      {/* Horizontal scroll container */}
-      <div className="overflow-x-auto">
+      {/* Container with overflow for vertical scrolling */}
+      <div className="overflow-y-auto max-h-[340px] md:max-h-[400px]">
         <table className="w-full min-w-[600px]">
-          <thead className="text-left border-b border-gray-200">
+          <thead className="sticky top-0 bg-white text-left border-b border-gray-200 z-10">
             <tr>
               <th className="py-3 pl-3 text-start text-sm sm:text-base">Product</th>
               <th className="py-3 text-start text-sm sm:text-base">Customer</th>
@@ -90,7 +111,6 @@ function RecentOrders() {
               <th className="py-3 pr-3 text-start text-sm sm:text-base">Status</th>
             </tr>
           </thead>
-          
           <tbody className="divide-y divide-gray-200">
             {orders.map((order) => (
               <tr key={order.id} className="hover:bg-gray-50">
@@ -118,7 +138,7 @@ function RecentOrders() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
 

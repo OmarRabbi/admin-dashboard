@@ -29,15 +29,15 @@ function Sidebar({menu, onClose}) {
     }
   ];
   return (
-    <div className={`fixed h-screen top-0 bottom-0 text-white w-64 h-full p-8 bg-slate-900 text-gray-50 -translate-x-64 lg:translate-x-0 lg:flex flex-col justify-between transition-all duration-500 z-[100] ${menu ? "translate-x-0.5" : "-translate-x-64"}`}>
+    <div className={`fixed h-screen top-0 bottom-0 text-white w-64 h-full p-8 bg-slate-900 text-gray-50 -translate-x-64 lg:translate-x-0 flex flex-col justify-between transition-all duration-500 z-[1000] ${menu ? "translate-x-0.5" : "-translate-x-64"}`}>
       <div className="flex flex-col gap-8 w-full">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <FaShopify className="w-6 h-6" />
-            <p>S-grocery</p>
+            <p className="text-xl lg:text-2xl">S-grocery</p>
           </div>
-          <IoClose className={`w-6 h-6 cursor-pointer`} onClick={onClose}/>
+          <IoClose className={`w-6 h-6 cursor-pointer block lg:hidden`} onClick={onClose}/>
         </div>
 
         {/* Sections */}
